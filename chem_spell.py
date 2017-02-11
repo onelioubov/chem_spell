@@ -1,4 +1,3 @@
-word = input('Enter your word: ')
 element_dictionary = {}
 element_weights = {}
 
@@ -44,10 +43,12 @@ def match_element(iter_word,new_string):
             new_string += "?"
     print (new_string + " ( " + element_string + ")")
 
-def get_word(word):
-    new_string = ""
-    match_element(word,new_string)
-    return new_string
+def get_word():
+    word = input('Enter your word or type "exit" to quit: ')
+    while word not in ['exit']:
+        new_string = ""
+        match_element(word,new_string)
+        word = input('Enter your word or type "exit" to quit: ')
 
 get_element()
-get_word(word)
+get_word()
