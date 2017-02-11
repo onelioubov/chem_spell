@@ -12,42 +12,41 @@ def get_element():
     return element_dictionary,element_weights
 
 #matches elements to word segments
-def match_element(iter_word,new_string):
+def match_element(iter_word,out_string):
     iter_word = list(iter_word)
     element_string = ""
     while iter_word:
         letter = iter_word[0].upper()
         if len(iter_word) > 1 and letter in element_dictionary and letter + iter_word[1] in element_dictionary: 
             if element_weights[letter] > element_weights[letter + iter_word[1]]:
-                new_string += letter
-                element_string += element_dictionary[letter] + " "
+                out_string += letter
+                element_string += element_dictionary[letter] + ", "
                 iter_word.pop(0)
             else:
-                new_string += letter
-                new_string += iter_word[1]
-                element_string += element_dictionary[letter + iter_word[1]] + " "
+                out_string += letter + iter_word[1]
+                element_string += element_dictionary[letter + iter_word[1]] + ", "
                 iter_word.pop(0)
                 iter_word.pop(0)
         elif letter in element_dictionary:
-            new_string += letter
-            element_string += element_dictionary[letter] + " "
+            out_string += letter
+            element_string += element_dictionary[letter] + ", "
             iter_word.pop(0)
         elif len(iter_word) > 1 and letter + iter_word[1] in element_dictionary:
-            new_string += letter
-            new_string += iter_word[1]
-            element_string += element_dictionary[letter + iter_word[1]] + " "
+            out_string += letter + iter_word[1]
+            element_string += element_dictionary[letter + iter_word[1]] + ", "
             iter_word.pop(0)
             iter_word.pop(0)
         else:
             iter_word.pop(0)
-            new_string += "?"
-    print (new_string + " ( " + element_string + ")")
+            out_string += "?"
+    print (out_string + " (" + element_string.lower().rstrip(', ') + ")")
 
+#gets input word and calls the element matching function
 def get_word():
     word = input('Enter your word or type "exit" to quit: ')
     while word not in ['exit']:
-        new_string = ""
-        match_element(word,new_string)
+        out_string = ""
+        match_element(word,out_string)
         word = input('Enter your word or type "exit" to quit: ')
 
 get_element()
