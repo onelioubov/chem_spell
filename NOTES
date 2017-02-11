@@ -1,0 +1,12 @@
+This is an easy-level programming challenge that was posted on the DailyProgrammer subreddit:
+
+https://www.reddit.com/r/dailyprogrammer/comments/5seexn/20170206_challenge_302_easy_spelling_with/
+
+The motivation for this is to practice using git and github; the programming practice is a bonus.
+
+Given a table of elements along with their weights and symbols, this program needs to take in random words and output their spellings in their respective elements. If muliple elements can be used in place of the letter/pair of letters, then the heaviest element must be used (bonus).
+
+Plan:
+-Will use a nested dictionary, a tuple, or matrix to store each element, symbol, and weight (or possibly sort by weight and use a regular dictionary)
+-Use recursion to read the word and output the elements within it
+
