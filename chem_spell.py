@@ -1,5 +1,6 @@
 word = input('Enter your word: ')
 element_dictionary = {}
+element_weights = {}
 
 #takes a tab-delimeted elements table and adds it to a dictionary
 def get_element():
@@ -7,7 +8,9 @@ def get_element():
     for line in element_list:
         words = line.split('\t')
         element_dictionary[words[1]] = words[0]
-    return element_dictionary
+        stripped = words[3].lstrip('(').rstrip(')')     #some atomic weights are listed as averages, denoted by parentheses; this strips them off
+        element_weights[words[1]] = stripped
+    return element_dictionary,element_weights
 
 #matches elements to word segments
 def match_element(iter_word,new_string):
@@ -26,7 +29,7 @@ def match_element(iter_word,new_string):
             iter_word.pop(0)
             iter_word.pop(0)
         else:
-            iter_word.pop()
+            iter_word.pop(0)
             new_string += "?"
     print (new_string + " ( " + element_string + ")")
 
@@ -37,4 +40,4 @@ def get_word(word):
 
 get_element()
 get_word(word)
-#print(final)
+print(element_weights)
