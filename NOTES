@@ -10,3 +10,6 @@ Plan:
 -Will use a nested dictionary, a tuple, or matrix to store each element, symbol, and weight (or possibly sort by weight and use a regular dictionary)
 -Use recursion to read the word and output the elements within it
 
+Afterthought: Using recursion ended up being more verbose than iteration, so iteration ended up being a better choice for me. Also, I ended up using two different dictionaries for the weights and element names instead of nesting them.
+
+Unfortunately, there aren't enough element combinations to account for all letters in the English dictionary. If the code comes accross such a letter, it outputs a '?' in its place to indicate this. 
