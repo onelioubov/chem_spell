@@ -18,7 +18,18 @@ def match_element(iter_word,new_string):
     element_string = ""
     while iter_word:
         letter = iter_word[0].upper()
-        if letter in element_dictionary:
+        if len(iter_word) > 1 and letter in element_dictionary and letter + iter_word[1] in element_dictionary: 
+            if element_weights[letter] > element_weights[letter + iter_word[1]]:
+                new_string += letter
+                element_string += element_dictionary[letter] + " "
+                iter_word.pop(0)
+            else:
+                new_string += letter
+                new_string += iter_word[1]
+                element_string += element_dictionary[letter + iter_word[1]] + " "
+                iter_word.pop(0)
+                iter_word.pop(0)
+        elif letter in element_dictionary:
             new_string += letter
             element_string += element_dictionary[letter] + " "
             iter_word.pop(0)
@@ -40,4 +51,3 @@ def get_word(word):
 
 get_element()
 get_word(word)
-print(element_weights)
